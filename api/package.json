@@ -1,0 +1,14 @@
+{
+  "name": "cryptlex-stripe-integration",
+  "version": "1.0.0",
+  "description": "A Node.js app which handles license generation and renewal.",
+  "author": "Cryptlex",
+  "license": "ISC",
+  "scripts": {
+    "build": "echo 'build finished'"
+  },
+  "dependencies": {
+    "node-fetch": "~2.6.2",
+    "uuid": "~8.3.2"
+  }
+}
