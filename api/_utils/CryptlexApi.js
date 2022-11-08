@@ -36,11 +36,6 @@ class CryptlexApi {
         }
         const license = licenses[0];
         console.log("renewing existing license...");
-        const expiryDate = new Date(license.expiresAt).getTime() / 1000;
-        // const now = new Date().getTime() / 1000;
-        // if ((expiryDate - now) / 86400 > 20) {
-        //     return license;
-        // }
         const renewedLicense = await httpClient.post(`${url}/${license.id}/renew`);
         return renewedLicense;
     }

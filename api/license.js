@@ -18,11 +18,11 @@ module.exports = async (req, res) => {
             return res.json({ event: event.type });
     }
 
-    const requestBody = event.data.object
-    if (requestBody.status = "paid" && requestBody.lines.data[0].type == "subscription" && requestBody.billing_reason == "subscription_create") {
+    const invoice = event.data.object
+    if (invoice.status = "paid" && invoice.billing_reason == "subscription_create") {
 
         // get post params from request body
-        const customerName = requestBody.customer_name
+        const customerName = invoice.customer_name
 
         const email = event.data.object.customer_email;
         let firstName = 'John', lastName = '_';
@@ -56,7 +56,12 @@ module.exports = async (req, res) => {
         console.log("License created successfully!");
         res.json({ key: license.key });
     }
+    else if (invoice.status == "paid" && invoice.billing_reason == "subscription_cycle") {
+        
+        // renew license expiry
+        const license = await CryptlexApi.renewLicense(productId, 'subscription_id', invoice.subscription);
+    }
     else {
-        return res.json({ "error": "Invalid event!" }); // need to discuss
+        return res.status(400).json({ "error": "Invalid event!" });
     }
 }
