@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
     if (invoice.billing_reason == "subscription_cycle") {
 
         // renew license expiry
-        const license = await CryptlexApi.renewLicense(productId, 'subscription_id', invoice.customer);
+        const license = await CryptlexApi.renewLicense(productId, 'subscription_id', invoice.subscription);
 
         // return new expiry date
         res.json({ message: `License new expiry date: ${license.expiresAt}` });
