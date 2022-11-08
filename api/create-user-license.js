@@ -57,6 +57,6 @@ module.exports = async (req, res) => {
         res.json({ key: license.key });
     }
     else {
-        return res.json({ "error": "Invalid event!" });
+        return res.json({ "error": "Invalid event!" }); // need to discuss
     }
 }
