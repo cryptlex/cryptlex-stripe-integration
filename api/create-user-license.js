@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
     }
 
     const requestBody = event.data.object
-    if (requestBody.status = "paid" && requestBody.lines.data[0].type == "subscription") {
+    if (requestBody.status = "paid" && requestBody.lines.data[0].type == "subscription" && requestBody.billing_reason == "subscription_create") {
 
         // get post params from request body
         const customerName = requestBody.customer_name
