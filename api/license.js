@@ -19,6 +19,7 @@ module.exports = async (req, res) => {
     }
 
     const invoice = event.data.object
+    console.log(invoice.status + "and" + invoice.billing_reason)
     if (invoice.status = "paid" && invoice.billing_reason == "subscription_create") {
 
         // get post params from request body
@@ -57,7 +58,7 @@ module.exports = async (req, res) => {
         res.json({ key: license.key });
     }
     else if (invoice.status == "paid" && invoice.billing_reason == "subscription_cycle") {
-        
+
         // renew license expiry
         const license = await CryptlexApi.renewLicense(productId, 'subscription_id', invoice.subscription);
     }
