@@ -19,8 +19,7 @@ module.exports = async (req, res) => {
     }
 
     const invoice = event.data.object
-    console.log(invoice.status + "and" + invoice.billing_reason)
-    if (invoice.status = "paid" && invoice.billing_reason == "subscription_create") {
+    if (invoice.status == "paid" && invoice.billing_reason == "subscription_create") {
 
         // get post params from request body
         const customerName = invoice.customer_name
@@ -63,6 +62,6 @@ module.exports = async (req, res) => {
         const license = await CryptlexApi.renewLicense(productId, 'subscription_id', invoice.subscription);
     }
     else {
-        return res.status(400).json({ "error": "Invalid event!" });
+        return res.status(400).json({ event: event.type });
     }
 }
