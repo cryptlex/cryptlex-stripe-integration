@@ -24,5 +24,8 @@ module.exports = async (req, res) => {
         // return new expiry date
         res.json({ message: `License new expiry date: ${license.expiresAt}` });
     }
-    return res.json({ "Message": "Non renewal payment!" }); // need to discuss
+    else{
+        return res.json({ "Message": "Non renewal payment!" }); // need to discuss
+    }
+    
 }
