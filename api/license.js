@@ -60,6 +60,9 @@ module.exports = async (req, res) => {
 
         // renew license expiry
         const license = await CryptlexApi.renewLicense(productId, 'subscription_id', invoice.subscription);
+        
+        // return new expiry date
+        res.json({ message: `License new expiry date: ${license.expiresAt}` });
     }
     else {
         return res.status(400).json({ event: event.type });
