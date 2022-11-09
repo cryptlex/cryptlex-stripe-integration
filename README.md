@@ -8,14 +8,7 @@
 
 ## Configuring webhooks in Stripe:
 
-Stripe Webhook Event: `customer.created`:
+Stripe Webhook Event: `invoice.paid`:
 
-https://YOUR_VERCEL_URL/api/create-license
+https://YOUR_VERCEL_URL/api/license
 
-Stripe Webhook Event: `invoice.payment_succeeded`:
-
-https://YOUR_VERCEL_URL/api/renew-license
-
-Stripe Webhook Event: `customer.subscription.updated`:
-
-https://YOUR_VERCEL_URL/api/delete-license
